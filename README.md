@@ -15,7 +15,7 @@ ON b.id = p.brand_id AND p.start_date BETWEEN DATE'2024-12-05' AND DATE'2024-12-
 
 ## Creating the Database
 
-To create the database, 
+To create the database
 1. Clone the repo: `git clone https://github.com/ikriv-samples/join.git`
 2. Start mysql container: `./run-container.sh`. NOTE: you should have Docker installed on your system.
 3. Fill the database: `./sql.sh create_db.sql`
@@ -72,7 +72,7 @@ Note how the promotion condition is included as part of the ON criteria.
 +-------------------------+---------------------------+------------+------------+
 ```
 ## Compare to other usages of JOIN
-If we want to see all promotions, we execute a tradiiton JOIN with id comparison:
+If we want to see all promotions, we execute a traditional JOIN with id comparison:
 
 ```
 SELECT b.name, p.description, p.start_date, p.end_date
@@ -117,5 +117,5 @@ WHERE p.start_date BETWEEN DATE'2024-12-05' AND DATE'2024-12-31' -- WRONG!
 Only the brands with upcoming promotions are retrieved, and all other brands are hidden.
 
 ## Conclusion
-With `LEFT JOIN`, including a criteria in the `ON` clause has different effect from including the same criteria in the `WHERE` clause. `WHERE` clause filters out the parent records that don't have any children that match the criteria, effectievly turning `LEFT JOIN` into an `INNER JOIN`. To maintain the `LEFT JOIN` semantics, any criteria pertaining to the child table should be placed in the `ON` clause.
+With `LEFT JOIN`, including a criteria in the `ON` clause has different effect from including the same criteria in the `WHERE` clause. `WHERE` clause filters out the parent records that don't have any children that match the criteria, effectively turning `LEFT JOIN` into an `INNER JOIN`. To maintain the `LEFT JOIN` semantics, any criteria pertaining to the child table should be placed in the `ON` clause.
 
